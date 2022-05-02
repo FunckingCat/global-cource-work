@@ -2,6 +2,10 @@
 
 ## Тема - 	Скидки и спецпредложения
 
+[Ссылка на макет Figma](https://www.figma.com/file/6TwNvIJ2lYhNK5dOpFbJBf/Stallion?node-id=0%3A1)
+
+[Ссылка на Анализ Конкуренов](https://docs.google.com/spreadsheets/d/1T0HnLARGz-KNV0TAvZYTc2SteY1BZPI_5IdaBStIRaY/edit#gid=0)
+
 ## Задание
 
 - многостраничный сайт с БД 
