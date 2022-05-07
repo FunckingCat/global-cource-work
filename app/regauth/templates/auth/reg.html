@@ -23,6 +23,7 @@
                                 <h2 class="text-uppercase text-center mb-5">Создать новый аккаунт</h2>
                                 <form method="post" action={% url 'sign-up' %}>
                                     {% csrf_token %}
+                                    {{ form }}
                                     <div class="mb-4">
                                         <input type="text" id="name" class="form-control form-control-lg" />
                                         <label class="form-label" for="name">Ваше имя</label>
