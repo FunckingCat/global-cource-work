@@ -11,17 +11,17 @@
 {% block main %}
     <div class="title">
         <div class="d-flex">
-            <h1 class="d-block">Комплекс процедур для коррекции фигуры</h1>
-          <span class="badge bg-warning align-self-start mx-2">NEW</span>
+            <h1 class="d-block">{{ coupon.name }}</h1>
+            <span class="badge bg-warning align-self-start mx-2">NEW</span>
         </div>
         <div class="subtitle">
-            <h2 class="h6">Щёлковская, г. Москва, Сиреневый бул., д. 21а</h2>
+            <h2 class="h6">{{ coupon.info }}</h2>
         </div>
     </div>
     <div class="container p-0">
         <div class="row">
             <div class="col1 col-8">
-                <img src="https://i.ytimg.com/vi/WRmM-gIBbZY/maxresdefault.jpg" class="img-fluid" alt="Responsive image">
+                <img src="{{ coupon.photo.url }}" class="img-fluid" alt="{{ coupon.name }}">
                 <ul class="nav nav-tabs mt-4" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
                       <button class="nav-link active text-body" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Условия</button>
@@ -34,19 +34,18 @@
                     </li>
                   </ul>
                   <div class="tab-content mt-2" id="myTabContent">
-                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus reiciendis iusto inventore, velit officiis sunt praesentium optio amet incidunt quisquam doloribus ipsa nesciunt perferendis distinctio fuga. Dolores quisquam ut temporibus.</div>
-                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi earum, adipisci, facilis aspernatur harum hic tempore culpa quod aliquam explicabo molestias cumque molestiae corporis voluptate minima quae veniam expedita. A.</div>
-                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cumque hic odio nobis id numquam tempore vel mollitia, recusandae optio voluptates quas fuga consequuntur maiores et dolorum animi quo maxime pariatur.
-                    Quaerat quisquam veritatis consequuntur, quas ipsa impedit libero quae. Qui blanditiis aliquam earum, natus quos beatae. Incidunt velit libero accusamus at numquam, cupiditate id deleniti? Neque maiores voluptate praesentium eius.</div>
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">{{ coupon.description }}</div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">{{ coupon.condition }}</div>
+                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">{{ coupon.address }}</div>
                   </div>
             </div>
             <div class="col2 col-4">
                 <div class="">
                     <div class="d-flex flex-row align-items-center mb-1">
-                      <h4 class="mb-1 me-1">14 999₽</h4>
-                      <span class="text-danger"><s>17 999₽</s></span>
+                      <h4 class="mb-1 me-1">{{ coupon.price }}₽</h4>
+                      <span class="text-danger"><s>{{ coupon.old_price }}₽</s></span>
                     </div>
-                    <h6 class="text-success">Экономия 2 999₽</h6>
+                    <h6 class="text-success">Экономия {{ sub }}₽</h6>
                     <div class="d-flex flex-column mt-4">
                       <button class="btn btn-outline-dark btn-sm mt-2" type="button">
                             В корзину
@@ -54,9 +53,6 @@
                     </div>
                   </div>
                 </div>
-            </div>
-            <div class="div seotext my-4">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Id sapiente exercitationem inventore dolor eos magnam, possimus doloremque ab similique illo. Iure minima expedita eum temporibus enim iste dignissimos sint exercitationem!
             </div>
         </div>
     </div>

@@ -1,3 +1,5 @@
+from typing import Union, Any
+
 from django.shortcuts import render
 from .models import Category, Coupon
 
@@ -33,7 +35,10 @@ def index(request, category_id=0):
 
 def coupon(request, coupon_id=0):
     main_tabs = Category.objects.filter(parent_category=None).order_by('id')
+    coupons = Coupon.objects.filter(id=coupon_id).first()
     return render(request, 'main/product.html', {
         'title': "title",
         'navmenu': main_tabs,
+        'coupon': coupons,
+        'sub' : coupons.old_price - coupons.price,
     })
