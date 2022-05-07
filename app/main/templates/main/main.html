@@ -1,75 +1,36 @@
 {% extends 'base.html' %}
 
+{% block title %}
+    {{ title }}
+{% endblock %}
+
 {% block header %}
     {% include 'nav.html' %}
 {% endblock %}
 
 {% block main %}
     <div class="title d-flex">
-        <h1 class="d-block">Услуги</h1>
-        <span class="badge bg-secondary align-self-start mx-2">2021</span>
+        <h1 class="d-block">{{ title }}</h1>
+        <span class="badge bg-secondary align-self-start mx-2">{{ title_badge }}</span>
     </div>
     <div class="subs d-flex mx-4">
-        <a class="btn btn-dark mx-2" href="#">Красота</a>
-        <a class="btn btn-dark mx-2" href="#">Здоровье</a>
-        <a class="btn btn-dark mx-2" href="#">Развлечения</a>
-        <a class="btn btn-dark mx-2" href="#">Обучение</a>
+        {% for sub in subs %}
+            <a class="btn btn-dark mx-2" href="{% url 'category' sub.pk %}">{{ sub.name }}</a>
+        {% endfor %}
     </div>
     <div class="cards d-flex flex-wrap my-3 justify-content-between">
-        <div class="card" style="width: 18rem;">
-            <img src="https://waterparkworld.ru/wp-content/uploads/2019/01/60-11.jpg" class="card-img-top" alt="...">
-            <div class="card-body d-flex flex-column">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                <a href="#" class="ml-auto btn btn-dark">Купить</a>
+        {% for coupon in coupons %}
+            <div class="card" style="width: 18rem;">
+                <img src="{{ coupon.photo.url }}" class="card-img-top" alt="...">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">{{ coupon.name }}</h5>
+                    <p class="card-text">{{ coupon.description }}</p>
+                    <a href="{% url 'coupon' coupon.pk %}" class="ml-auto btn btn-dark">Купить</a>
+                </div>
             </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <img src="https://waterparkworld.ru/wp-content/uploads/2019/01/60-11.jpg" class="card-img-top" alt="...">
-            <div class="card-body d-flex flex-column">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                <a href="#" class="ml-auto btn btn-dark">Купить</a>
-            </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <img src="https://waterparkworld.ru/wp-content/uploads/2019/01/60-11.jpg" class="card-img-top" alt="...">
-            <div class="card-body d-flex flex-column">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                <a href="#" class="ml-auto btn btn-dark">Купить</a>
-            </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <img src="https://waterparkworld.ru/wp-content/uploads/2019/01/60-11.jpg" class="card-img-top" alt="...">
-            <div class="card-body d-flex flex-column">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                <a href="#" class="ml-auto btn btn-dark">Купить</a>
-            </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <img src="https://waterparkworld.ru/wp-content/uploads/2019/01/60-11.jpg" class="card-img-top" alt="...">
-            <div class="card-body d-flex flex-column">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                <a href="#" class="ml-auto btn btn-dark">Купить</a>
-            </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <img src="https://waterparkworld.ru/wp-content/uploads/2019/01/60-11.jpg" class="card-img-top" alt="...">
-            <div class="card-body d-flex flex-column">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                <a href="#" class="ml-auto btn btn-dark">Купить</a>
-            </div>
-        </div>
+        {% empty %}
+            В этой категории нет купонов
+        {% endfor %}
     </div>
 {% endblock %}
 
