@@ -18,9 +18,9 @@
             <a class="btn btn-dark mx-2" href="{% url 'category' sub.pk %}">{{ sub.name }}</a>
         {% endfor %}
     </div>
-    <div class="cards d-flex flex-wrap my-3 justify-content-between">
+    <div class="cards d-flex flex-wrap my-3 justify-content-center">
         {% for coupon in coupons %}
-            <div class="card" style="width: 18rem;">
+            <div class="card m-2" style="width: 18rem;">
                 <img src="{{ coupon.photo.url }}" class="card-img-top" alt="...">
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">{{ coupon.name }}</h5>
