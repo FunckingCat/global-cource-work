@@ -9,6 +9,24 @@
 {% endblock %}
 
 {% block main %}
+    <style>
+        .title {
+           overflow: hidden;
+           text-overflow: ellipsis;
+           display: -webkit-box;
+           -webkit-line-clamp: 3; /* number of lines to show */
+                   line-clamp: 3;
+           -webkit-box-orient: vertical;
+        }
+        .text {
+           overflow: hidden;
+           text-overflow: ellipsis;
+           display: -webkit-box;
+           -webkit-line-clamp: 5; /* number of lines to show */
+                   line-clamp: 5;
+           -webkit-box-orient: vertical;
+        }
+    </style>
     <div class="title d-flex">
         <h1 class="d-block">{{ title }}</h1>
         <span class="badge bg-secondary align-self-start mx-2">{{ title_badge }}</span>
@@ -23,9 +41,9 @@
             <div class="card m-2" style="width: 18rem;">
                 <img src="{{ coupon.photo.url }}" class="card-img-top" alt="...">
                 <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">{{ coupon.name }}</h5>
-                    <p class="card-text">{{ coupon.description }}</p>
-                    <a href="{% url 'coupon' coupon.pk %}" class="ml-auto btn btn-dark">Купить</a>
+                    <h5 class="card-title title">{{ coupon.name }}</h5>
+                    <p class="card-text text">{{ coupon.description }}</p>
+                    <a href="{% url 'coupon' coupon.pk %}" class="ml-auto mt-auto btn btn-dark">Купить</a>
                 </div>
             </div>
         {% empty %}
