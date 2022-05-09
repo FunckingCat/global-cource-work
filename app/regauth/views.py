@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 # Create your views here.
 from django.shortcuts import render
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
 
 
 # Create your views here.
@@ -13,8 +14,15 @@ def sign_in(request):
 
 def sign_up(request):
     if request.method == 'POST':
-        print('POST')
-    form = UserCreationForm()
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Вы успешно зарегистрированы')
+            return redirect('/')
+        else:
+            messages.error(request, 'Ошибка регистрации')
+    else:
+        form = UserCreationForm()
     return render(request, 'auth/reg.html', {
         "form": form
     })
