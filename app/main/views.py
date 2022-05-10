@@ -87,3 +87,15 @@ def coupon(request, coupon_id=0):
         'coupon': coupons,
         'sub': coupons.old_price - coupons.price,
     })
+
+
+def cart(request):
+    return render(request, 'main/cart.html')
+
+
+def add(request, coupon_id=0):
+    return render(request, 'main/cart.html')
+
+
+def delete(request, coupon_id=0):
+    return render(request, 'main/cart.html')

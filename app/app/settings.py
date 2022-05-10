@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'regauth.apps.RegauthConfig',
     'main.apps.MainConfig',
-    'cart.apps.CartConfig',
 ]
 
 MIDDLEWARE = [

@@ -48,9 +48,9 @@
                     <h6 class="text-success">Экономия {{ sub }}₽</h6>
                     <div class="d-flex flex-column mt-4">
                         {% if request.user.is_authenticated %}
-                            <button class="btn btn-outline-dark btn-sm mt-2" type="button">
+                            <a href="{% url 'cart-add' coupon.pk %}" class="btn btn-outline-dark btn-sm mt-2">
                                 В корзину
-                          </button>
+                            </a>
                         {% else %}
                              <div class="alert alert-danger" role="alert">
                                 Что бы продолжить покупки на сайте, пожалуйста, войдите в учётную запись
