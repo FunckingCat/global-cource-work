@@ -40,3 +40,8 @@ def sign_up(request):
     return render(request, 'auth/reg.html', {
         "form": form
     })
+
+
+def user_logout(request):
+    logout(request)
+    return redirect('/')

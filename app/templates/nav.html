@@ -25,16 +25,12 @@
                     <a class="nav-link" href="#">Корзина</a>
                 </li>
             </ul>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Например: Аквапарк"
-                    aria-label="search">
-                <button class="btn btn-outline-light" type="submit">Поиск</button>
-            </form>
-            <div class="mx-2 my-2 mr-0">
+            <div class="mx-2 my-2 mr-0 d-flex align-items-center">
                 {% if request.user.is_authenticated %}
-                    <div class="text-white">
-                        {{ user.username }}
+                    <div class="text-white mx-2">
+                        {{ user.username }} | {{ user.email }}
                     </div>
+                    <a href="{% url 'logout' %}" class="btn btn-secondary">Выйти</a>
                 {% else %}
                     <a href="{% url 'sign-in' %}" class="btn btn-secondary">Войти</a>
                 {% endif %}
@@ -42,3 +38,18 @@
         </div>
     </div>
 </nav>
+ <div class="mx-5 d-flex align-items-center justify-content-between">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a class="text-body" href="{% url 'index' %}">Главная</a></li>
+        {% if chumps is not None %}
+            {% for chump in chumps %}
+                <li class="breadcrumb-item"><a class="text-body" href="{{ chump.1 }}">{{ chump.0 }}</a></li>
+            {% endfor %}
+        {% endif %}
+    </ol>
+     <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Например: Аквапарк"
+            aria-label="search">
+        <button class="btn btn-outline-dark" type="submit">Поиск</button>
+    </form>
+</div>
