@@ -53,9 +53,6 @@ def coupon(request, coupon_id=0):
     if coupons is not None:
         chumps = genBreadChumps(coupons.category)
         chumps.append([coupons.name, reverse('coupon', args=[coupons.id])])
-        if chumps is not None:
-            for item in chumps:
-                print(item[0], item[1])
     else:
         chumps = []
     return render(request, 'main/product.html', {

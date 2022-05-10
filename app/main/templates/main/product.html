@@ -47,9 +47,15 @@
                     </div>
                     <h6 class="text-success">Экономия {{ sub }}₽</h6>
                     <div class="d-flex flex-column mt-4">
-                      <button class="btn btn-outline-dark btn-sm mt-2" type="button">
-                            В корзину
-                      </button>
+                        {% if request.user.is_authenticated %}
+                            <button class="btn btn-outline-dark btn-sm mt-2" type="button">
+                                В корзину
+                          </button>
+                        {% else %}
+                             <div class="alert alert-danger" role="alert">
+                                Что бы продолжить покупки на сайте, пожалуйста, войдите в учётную запись
+                            </div>
+                        {% endif %}
                     </div>
                   </div>
                 </div>
