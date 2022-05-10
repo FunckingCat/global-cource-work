@@ -2,6 +2,7 @@ from typing import Union, Any
 
 from django.shortcuts import render
 from django.urls import reverse
+from django.db.models import Q
 
 from .models import Category, Coupon
 
@@ -41,6 +42,30 @@ def index(request, category_id=0):
         'chumps': chumps,
         'title': title,
         'title_badge': 'Купонов категории: ' + str(coupons.count()),
+        'navmenu': main_tabs,
+        'subs': subs,
+        'coupons': coupons
+    })
+
+
+def search(request, search_string=''):
+    main_tabs = Category.objects.filter(parent_category=None).order_by('id')
+    subs = []
+    title = "Поиск купонов"
+    chumps = []
+    search_string = request.GET.get('search_string', '')
+    coupons = Coupon.objects.filter(
+        Q(name__icontains=search_string) |
+        Q(address__icontains=search_string) |
+        Q(condition__icontains=search_string) |
+        Q(description__icontains=search_string)
+    )
+
+    return render(request, 'main/main.html', {
+        'request': request,
+        'chumps': chumps,
+        'title': title,
+        'title_badge': 'Найдено купонов: ' + str(coupons.count()),
         'navmenu': main_tabs,
         'subs': subs,
         'coupons': coupons

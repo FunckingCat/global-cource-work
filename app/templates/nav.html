@@ -49,9 +49,9 @@
             {% endfor %}
         {% endif %}
     </ol>
-     <form class="d-flex">
+     <form class="d-flex" method="get" action="{% url 'search' %}">
         <input class="form-control me-2" type="search" placeholder="Например: Аквапарк"
-            aria-label="search">
+            aria-label="search" name="search_string">
         <button class="btn btn-outline-dark" type="submit">Поиск</button>
     </form>
 </div>
