@@ -25,6 +25,7 @@ def index(request, category_id=0):
         coupons = getCoupons(category)
 
     return render(request, 'main/main.html', {
+        'request': request,
         'title': title,
         'title_badge': 'Купонов категории: ' + str(coupons.count()),
         'navmenu': main_tabs,

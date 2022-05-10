@@ -5,6 +5,13 @@
 {% endblock %}
 
 {% block main %}
+    <style>
+        .errorlist
+        {
+            color: #dc3545;
+            list-style-type: none;
+        }
+    </style>
     <section class="vh-100">
         <div class="mask d-flex align-items-center h-100 gradient-custom-3">
             <div class="container h-100">
@@ -13,26 +20,38 @@
                         <div class="card" style="border-radius: 15px;">
                             <div class="card-body p-5">
                                 <h2 class="text-uppercase text-center mb-5">Войти</h2>
-                                <form>
+                                {% if messages %}
+                                {% for message in messages %}
+                                    {% if message.tags == 'error' %}
+                                        <div class="alert alert-danger" role="alert">
+                                            {{ message }}
+                                        </div>
+                                        {% else %}
+                                        <div class="alert alert-success" role="alert">
+                                            {{ message }}
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
 
-                                    <div class="mb-4">
-                                        <input type="email" id="email" class="form-control form-control-lg" />
-                                        <label class="form-label" for="email">Ваш email</label>
+                            {% endif %}
+                            <form method="post" action={% url 'sign-in' %}>
+                                {% csrf_token %}
+
+                                {% for field in form %}
+                                    <div class="fieldWrapper mb-4">
+                                    {{ field.label_tag }}
+                                        {{ field }}
+                                    {{ field.errors }}
                                     </div>
+                                {% endfor %}
 
-                                    <div class="mb-4">
-                                        <input type="password" id="password" class="form-control form-control-lg" />
-                                        <label class="form-label" for="password">Пароль</label>
-                                    </div>
+                                <div class="d-flex justify-content-center">
+                                    <button type="submit" class="btn btn-dark text-white btn-block btn-lg gradient-custom-4">Войти</button>
+                                </div>
 
-                                    <div class="d-flex justify-content-center">
-                                        <button type="button"
-                                            class="btn btn-dark text-white btn-block btn-lg gradient-custom-4">Войти</button>
-                                    </div>
-
-                                    <p class="text-center text-muted mt-5 mb-0">Еще нет аккаунта? <a href="{% url 'sign-up' %}"
-                                            class="fw-bold text-body"><u>Зарегистрироваться</u></a></p>
-                                </form>
+                                <p class="text-center text-muted mt-5 mb-0">Нет аккаунта? <a href="{% url 'sign-up' %}"
+                                        class="fw-bold text-body"><u>Зарегистрироваться</u></a></p>
+                            </form>
 
                             </div>
                         </div>

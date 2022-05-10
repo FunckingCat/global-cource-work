@@ -31,7 +31,13 @@
                 <button class="btn btn-outline-light" type="submit">Поиск</button>
             </form>
             <div class="mx-2 my-2 mr-0">
-                <a href="{% url 'sign-in' %}" class="btn btn-secondary">Войти</a>
+                {% if request.user.is_authenticated %}
+                    <div class="text-white">
+                        {{ user.username }}
+                    </div>
+                {% else %}
+                    <a href="{% url 'sign-in' %}" class="btn btn-secondary">Войти</a>
+                {% endif %}
             </div>
         </div>
     </div>
