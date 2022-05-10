@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block header %}
+    {% include 'nav.html' %}
+{% endblock %}
+
+{% block main %}
+    <style>
+        .title {
+           overflow: hidden;
+           text-overflow: ellipsis;
+           display: -webkit-box;
+           -webkit-line-clamp: 3; /* number of lines to show */
+                   line-clamp: 3;
+           -webkit-box-orient: vertical;
+        }
+    </style>
+
+    <div class="title">
+            <div class="d-flex">
+                <h1 class="d-block">Корзина</h1>
+                <span class="badge bg-dark align-self-start mx-2">6 купонов</span>
+            </div>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Handle</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>
+                        <div class="w-100 h-100 d-flex item-center justify-content-end align-items-center">
+                            <button class="btn btn-outline-danger p-1 px-4" style="font-size: 0.7em; align-self: end;">Удалить</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                    <td>
+                        <div class="w-100 h-100 d-flex item-center justify-content-end align-items-center">
+                            <button class="btn btn-outline-danger p-1 px-4" style="font-size: 0.7em; align-self: end;">Удалить</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Larry</td>
+                    <td>the Bird</td>
+                    <td>@twitter</td>
+                    <td>
+                        <div class="w-100 h-100 d-flex item-center justify-content-end align-items-center">
+                            <button class="btn btn-outline-danger p-1 px-4" style="font-size: 0.7em; align-self: end;">Удалить</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="align-self-end">
+            <span class="h2">Итого: 5500Р</span>
+        </div>
+        <button class="btn btn-outline-dark align-self-end px-5 mt-2">
+            Оплатить
+        </button>
+{% endblock %}
+
+{% block footer %}
+    {% include 'footer.html' %}
+{% endblock %}
