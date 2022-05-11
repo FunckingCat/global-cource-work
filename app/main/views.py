@@ -128,4 +128,37 @@ def add(request, coupon_id=0):
 
 
 def delete(request, coupon_id=0):
-    return render(request, 'main/cart.html')
+    if not request.user.is_authenticated:
+        return render(request, 'main/error_page.html', {
+            'error_code': '500',
+            'error_text': 'Упс... Перед тем как что то удалить надо Войти'
+        })
+    coupon = Coupon.objects.filter(id=coupon_id).first()
+    if coupon is None:
+        return render(request, 'main/error_page.html', {
+            'error_code': '505',
+            'error_text': 'Купон не найден'
+        })
+    request.user.profile.cart.remove(coupon)
+    return redirect(reverse('cart'))
+
+
+def buy(request):
+    if not request.user.is_authenticated:
+        return render(request, 'main/error_page.html', {
+            'error_code': '500',
+            'error_text': 'Упс... Перед тем как что то удалить надо Войти'
+        })
+    coupons = request.user.profile.cart.all()
+    if coupons.count() < 1:
+        return render(request, 'main/error_page.html', {
+            'error_code': '200',
+            'error_text': 'Ой... Похоже в корзине нет записей'
+        })
+    for coupon_item in coupons:
+        request.user.profile.cart.remove(coupon_item)
+        request.user.profile.bought.add(coupon_item)
+    return render(request, 'main/error_page.html', {
+        'error_code': '200',
+        'error_text': 'Купоны успешно куплены. (Здесь должна была быть интеграция с платежной системой)'
+    })

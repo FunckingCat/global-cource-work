@@ -43,7 +43,7 @@
                         <td>{{ coupon.price }}</td>
                         <td>
                             <div class="w-100 h-100 d-flex item-center justify-content-end align-items-center">
-                                <button class="btn btn-outline-danger p-1 px-4" style="font-size: 0.7em; align-self: end;">Удалить</button>
+                                <a href="{% url 'cart-del' coupon.pk %}" class="btn btn-outline-danger p-1 px-4" style="font-size: 0.7em; align-self: end;">Удалить</a>
                             </div>
                         </td>
                     </tr>
@@ -53,9 +53,9 @@
         <div class="align-self-end">
             <span class="h2">Итого: {{ total_cost }}Р</span>
         </div>
-        <button class="btn btn-outline-dark align-self-end px-5 mt-2">
+        <a href="{% url 'cart-buy' %}" class="btn btn-outline-dark align-self-end px-5 mt-2">
             Оплатить
-        </button>
+        </a>
 {% endblock %}
 
 {% block footer %}

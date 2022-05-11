@@ -7,6 +7,7 @@ urlpatterns = [
     path('coupon/<int:coupon_id>/', views.coupon, name='coupon'),
     path('search/', views.search, name='search'),
     path('cart/', views.cart, name='cart'),
+    path('cart-buy/', views.buy, name='cart-buy'),
     path('add/<int:coupon_id>/', views.add, name='cart-add'),
     path('delete/<int:coupon_id>/', views.delete, name='cart-del'),
 ]
