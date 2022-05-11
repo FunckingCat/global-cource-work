@@ -82,7 +82,7 @@ def coupon(request, coupon_id=0):
     else:
         chumps = []
     return render(request, 'main/product.html', {
-        'title': "title",
+        'title': coupons.name,
         'chumps': chumps,
         'navmenu': main_tabs,
         'coupon': coupons,
@@ -91,7 +91,23 @@ def coupon(request, coupon_id=0):
 
 
 def cart(request):
-    return render(request, 'main/cart.html')
+    if not request.user.is_authenticated:
+        return render(request, 'main/error_page.html', {
+            'error_code': '500',
+            'error_text': 'Упс... Перед тем как зайти в корзину надо Войти'
+        })
+    main_tabs = Category.objects.filter(parent_category=None).order_by('id')
+    total_cost = 0
+    for coupon_in_cart in request.user.profile.cart.all():
+        total_cost += coupon_in_cart.price
+    return render(request, 'main/cart.html', {
+        'title': 'Корзина',
+        'chumps': [],
+        'navmenu': main_tabs,
+        'count_coupons': request.user.profile.cart.all().count(),
+        'coupons': request.user.profile.cart.all(),
+        'total_cost': total_cost,
+    })
 
 
 def add(request, coupon_id=0):
