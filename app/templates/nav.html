@@ -1,3 +1,12 @@
+<style>
+    .chumb {
+      display: block;
+      max-width: 150px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+</style>
 <div class="d-flex flex-row-reverse">
     <div class="mx-5">
         <a class="text-body" href="tel:+74951234567">+7 (495) 123-45-67</a>
@@ -45,7 +54,7 @@
         <li class="breadcrumb-item"><a class="text-body" href="{% url 'index' %}">Главная</a></li>
         {% if chumps is not None %}
             {% for chump in chumps %}
-                <li class="breadcrumb-item"><a class="text-body" href="{{ chump.1 }}">{{ chump.0 }}</a></li>
+                <li class="breadcrumb-item chumb"><a class="text-body" href="{{ chump.1 }}">{{ chump.0 }}</a></li>
             {% endfor %}
         {% endif %}
     </ol>
