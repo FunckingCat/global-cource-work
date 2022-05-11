@@ -27,6 +27,19 @@
            -webkit-box-orient: vertical;
         }
     </style>
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'error' %}
+                <div class="alert alert-danger mt-2" role="alert">
+                    {{ message }}
+                </div>
+                {% else %}
+                <div class="alert alert-success mt-2" role="alert">
+                    {{ message }}
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
     <div class="title d-flex">
         <h1 class="d-block">{{ title }}</h1>
         <span class="badge bg-secondary align-self-start mx-2">{{ title_badge }}</span>

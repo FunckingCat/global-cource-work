@@ -1,8 +1,9 @@
 from typing import Union, Any
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.db.models import Q
+from django.contrib import messages
 
 from .models import Category, Coupon
 
@@ -94,7 +95,20 @@ def cart(request):
 
 
 def add(request, coupon_id=0):
-    return render(request, 'main/cart.html')
+    if not request.user.is_authenticated:
+        return render(request, 'main/error_page.html', {
+            'error_code': '500',
+            'error_text': 'Упс... Перед тем как что то купить надо Войти'
+        })
+    coupon = Coupon.objects.filter(id=coupon_id).first()
+    if coupon is None:
+        return render(request, 'main/error_page.html', {
+            'error_code': '505',
+            'error_text': 'Купон не найден'
+        })
+    request.user.profile.cart.add(coupon)
+    messages.success(request, 'Купон добавлен в корзину')
+    return redirect('/')
 
 
 def delete(request, coupon_id=0):

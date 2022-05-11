@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Ошибка: {{ error_code }}
+{% endblock %}
+
+{% block header %}
+
+{% endblock %}
+
+{% block main %}
+    <div class="h-100 page-wrap d-flex flex-row align-items-center justify-content-center mt-5">
+    <div class="container d-flex flex-row align-items-center justify-content-center">
+        <div class="h-100 row justify-content-center  d-flex flex-row align-items-center justify-content-center">
+            <div class="h-100 col-md-12 text-center  d-flex flex-column align-items-center justify-content-center">
+                <span class="display-1 d-block">{{ error_code }}</span>
+                <div class="mb-4 lead">{{ error_text }}</div>
+                <a href="{% url 'index' %}" class="btn btn-outline-dark">На главную</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+
+{% endblock %}
