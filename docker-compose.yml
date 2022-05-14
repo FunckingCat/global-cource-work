@@ -1,0 +1,28 @@
+#******************************************** #
+#                                             #
+#  By: david_zh   <david99111@mial.ru>        #
+#                                             #
+#  Created: 2022/03/01 11:39:30 by david_zh   #
+#  Updated: 2022/03/01 11:39:31 by david_zh   #
+#                                             #
+#******************************************** #
+
+version: '3.0'
+
+services:
+
+  mysql:
+    container_name: mysql
+    platform: linux/x86_64
+    image: mysql:5.7
+    volumes:
+      - ./docker/mysql/data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    networks:
+      - backend
+    ports:
+      - "3306:3306"
+
+networks:
+  backend:
