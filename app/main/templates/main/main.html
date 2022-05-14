@@ -53,10 +53,11 @@
         {% for coupon in coupons %}
             <div class="card m-2" style="width: 18rem;">
                 <img src="{{ coupon.photo.url }}" class="card-img-top" alt="...">
-                <div class="card-body d-flex flex-column">
+                <div class="card-body d-flex flex-column justify-content-between">
                     <h5 class="card-title title">{{ coupon.name }}</h5>
                     <p class="card-text text">{{ coupon.description }}</p>
-                    <a href="{% url 'coupon' coupon.pk %}" class="ml-auto mt-auto btn btn-dark">Купить</a>
+                    <div class="card-text price align-self-end">{{ coupon.price }}₽</div>
+                    <a href="{% url 'coupon' coupon.pk %}" class="ml-auto btn btn-dark">Купить</a>
                 </div>
             </div>
         {% empty %}
