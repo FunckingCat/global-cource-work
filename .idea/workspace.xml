@@ -4,14 +4,8 @@
     <list default="true" id="b8978b61-fb55-4277-a96d-9cafc4550822" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/38ddb907-46b6-4992-a108-43b93825b9aa.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/38ddb907-46b6-4992-a108-43b93825b9aa/storage_v2/_src_/database/test.kkQ2AA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/38ddb907-46b6-4992-a108-43b93825b9aa/storage_v2/_src_/database/test.kkQ2AA/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/38ddb907-46b6-4992-a108-43b93825b9aa/storage_v2/_src_/database/test.kkQ2AA/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/38ddb907-46b6-4992-a108-43b93825b9aa/storage_v2/_src_/database/test.kkQ2AA/schema/public.abK9xQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/global-cource-work.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/global-cource-work.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements" beforeDir="false" afterPath="$PROJECT_DIR$/requirements" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +39,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
@@ -55,7 +50,8 @@
   },
   &quot;keyToStringList&quot;: {
     &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+      &quot;postgresql&quot;,
+      &quot;mysql&quot;
     ]
   }
 }</component>
@@ -64,11 +60,12 @@
       <recent name="$PROJECT_DIR$/app/auth/templates/auth" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/env" />
       <recent name="$PROJECT_DIR$/app/main/templates/main" />
       <recent name="$PROJECT_DIR$/app/regauth" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Django Server.runserver">
     <configuration name="runserver" type="Python.DjangoServer" factoryName="Django server">
       <module name="global-cource-work" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -93,6 +90,25 @@
       <option name="customRunCommand" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="docker-compose.yml.mysql: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="envFilePath" value="" />
+          <option name="services">
+            <list>
+              <option value="mysql" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Docker.docker-compose.yml.mysql: Compose Deployment" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="4" Folder0="$PROJECT_DIR$/../Documents/Russian" Folder1="$PROJECT_DIR$/../Documents/Russian" Folder2="$PROJECT_DIR$/../Documents/Russian" Folder3="$PROJECT_DIR$/../Documents/Russian" CustomDictionaries="4" CustomDictionary0="$PROJECT_DIR$/../Documents/Russian/ru_gen4.dic" CustomDictionary1="$PROJECT_DIR$/../Documents/Russian/ru_names4.dic" CustomDictionary2="$PROJECT_DIR$/../Documents/Russian/ru_phys4.dic" CustomDictionary3="$PROJECT_DIR$/../Documents/Russian/ru.dic" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -111,6 +127,9 @@
       <workItem from="1652252397560" duration="7600000" />
       <workItem from="1652271891530" duration="3459000" />
       <workItem from="1652516862344" duration="1672000" />
+      <workItem from="1652528497239" duration="4455000" />
+      <workItem from="1652536712575" duration="2000" />
+      <workItem from="1652623229439" duration="599000" />
     </task>
     <servers />
   </component>
@@ -127,5 +146,8 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>
