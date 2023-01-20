@@ -18,7 +18,7 @@
 </div>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded mb-2">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'index' %}">Stallion</a>
+        <a class="navbar-brand" href="{% url 'main-page' %}">Stallion</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
             aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -51,7 +51,7 @@
 </nav>
  <div class="mx-5 d-flex align-items-center justify-content-between">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a class="text-body" href="{% url 'index' %}">Главная</a></li>
+        <li class="breadcrumb-item"><a class="text-body" href="{% url 'main-page' %}">Главная</a></li>
         {% if chumps is not None %}
             {% for chump in chumps %}
                 <li class="breadcrumb-item chumb"><a class="text-body" href="{{ chump.1 }}">{{ chump.0 }}</a></li>

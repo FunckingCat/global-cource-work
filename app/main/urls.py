@@ -1,5 +1,11 @@
 from django.urls import path, include
 from . import views
+from rest_framework import routers
+
+from .views import CouponViewSet
+
+router = routers.SimpleRouter()
+router.register(r'coupon', CouponViewSet)
 
 urlpatterns = [
     path('', views.index, name='main-page'),
@@ -10,4 +16,5 @@ urlpatterns = [
     path('cart-buy/', views.buy, name='cart-buy'),
     path('add/<int:coupon_id>/', views.add, name='cart-add'),
     path('delete/<int:coupon_id>/', views.delete, name='cart-del'),
+    path('api/v1/', include(router.urls))
 ]

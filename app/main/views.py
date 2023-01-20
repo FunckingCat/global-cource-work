@@ -1,11 +1,20 @@
 from typing import Union, Any
 
+import re
+
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.db.models import Q
 from django.contrib import messages
+from rest_framework import status, viewsets
+from rest_framework.response import Response
+from rest_framework.decorators import action
+from rest_framework import filters
+import django_filters.rest_framework
+from django_filters.rest_framework import DjangoFilterBackend
 
 from .models import Category, Coupon
+from .serializers import CouponSerializer
 
 
 # Create your views here.
@@ -162,3 +171,33 @@ def buy(request):
         'error_code': '200',
         'error_text': 'Купоны успешно куплены. (Здесь должна была быть интеграция с платежной системой)'
     })
+
+
+class CouponViewSet(viewsets.ModelViewSet):
+    queryset = Coupon.objects.all()
+    serializer_class = CouponSerializer
+    # filter_backends = [filters.SearchFilter, django_filters.rest_framework.DjangoFilterBackend]
+    filter_backends = [filters.SearchFilter, DjangoFilterBackend]
+    search_fields = ['name', 'condition', 'description', 'address', 'price', 'old_price']
+    filterset_fields = ['name', 'condition', 'description', 'address', 'price', 'old_price']
+
+    def get_queryset(self):
+        queryset = Coupon.objects.all()
+        param = self.request.query_params.get('maxPrice')
+        if param is not None:
+            queryset = queryset.filter(price__lte=param)
+        return queryset
+
+    @action(methods=['get'], detail=False)
+    def category(self, request):
+        cats = Category.objects.all().values()
+        return Response({'categories': [i['name'] for i in cats]})
+
+    @action(methods=['post'], detail=True)
+    def update_price(self, request, pk=None):
+        new_price = int(re.sub(r'[^0-9]', '', request.data['price']))
+        if new_price < 0:
+            return Response('Bad price', status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        cp = Coupon.objects.filter(id=pk)
+        cp.update(price=new_price)
+        return Response({'coupon': cp.values()[0]})

@@ -20,14 +20,10 @@ from django.shortcuts import redirect
 from django.urls import path, include
 
 
-def index(request):
-    return redirect('/coupons/')
-
-
 urlpatterns = [
+    path('api-auth/', include('rest_framework.urls')),
     path('admin/', admin.site.urls),
-    path('', index, name='index'),
-    path('coupons/', include('main.urls')),
+    path('', include('main.urls')),
     path('auth/', include('regauth.urls')),
 ]
 
